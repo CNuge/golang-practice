@@ -13,12 +13,15 @@ import(
 	"strings"
 )
 
-var comp_map = map[string]string{
+var comp_map = map[string] string {
 			"A" : "T",
 			"T" : "A",
 			"G" : "C",
-			"C" : "G"}
+			"C" : "G", }
 
+// take a string of DNA as input, split it to an array and then 
+// iterate over the slice in reverse order, getting the complimentary bp 
+// from the map
 
 func rev_comp(dna_string string) string {
 	original := strings.Split(dna_string, "")
