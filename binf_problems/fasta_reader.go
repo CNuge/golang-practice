@@ -22,15 +22,9 @@ type seq struct {
 	sequence string
 }
 
-// represent a list of sequences
-type Fasta struct {
-	entries []seq
-}
-
-// add a seq struct instance to the fasta struct
-func (sl *Fasta) AddItem(item seq) []seq {
-	sl.entries = append(sl.entries, item)
-	return sl.entries
+// get the length of a seq
+func (sq seq) len() int {
+	return len(sq.sequence)
 }
 
 // the function to return the sequence in fasta format when printed
@@ -38,6 +32,35 @@ func (sq seq) String() string {
 	return fmt.Sprintf(">%v\n%v\n", sq.name, sq.sequence)
 }
 
+
+// represent a list of sequences
+type Fasta struct {
+	entries []seq
+}
+
+// add a seq struct instance to the fasta struct
+func (fa *Fasta) AddItem(item seq) []seq {
+	fa.entries = append(fa.entries, item)
+	return fa.entries
+}
+
+
+// this structure stores the length data for all the 
+type len_check struct{
+		name string 
+		length int
+	}
+
+func (fa *Fasta) lenAll() []len_check {
+	output := []len_check{}
+	for _ , entry := range fa.entries{
+		data := len_check{name : entry.name, length : len(entry.sequence)}
+		output = append(output, data)
+		}
+	return output
+}
+
+// take a raw entry string from a fasta file and build a seq structure
 func ParseFasta(fasta_entry string) seq {
 	entry := strings.Split(fasta_entry, "\n")
 	// first position is the name,
@@ -86,8 +109,12 @@ func main() {
 	// and it therefore pretty prints
 	// show first
 	fmt.Println(allfasta.entries[0])
+	fmt.Println(allfasta.entries[0].len())
 	// show last
 	fmt.Println(allfasta.entries[len(allfasta.entries)-1])
+	fmt.Println(allfasta.lenAll())
+	all_len_data := allfasta.lenAll()
+	fmt.Println(all_len_data[0].length)
 
 }
 
