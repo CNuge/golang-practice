@@ -32,7 +32,6 @@ func (sq seq) String() string {
 	return fmt.Sprintf(">%v\n%v\n", sq.name, sq.sequence)
 }
 
-
 // represent a list of sequences
 type Fasta struct {
 	entries []seq
@@ -71,17 +70,14 @@ func ParseFasta(fasta_entry string) seq {
 
 func ReadFasta(filename string) Fasta {
 	fileseqs := Fasta{} // start an empty Fasta instance
-
-	//Opening a file to obtain an os.File value
+	//Opening a file
 	file, err := ioutil.ReadFile(filename)
 	// check if that caused an error
 	if err != nil {
 		log.Fatal(err)
 	}
-
 	// split the input file on the new seq characters
 	data := strings.Split(string(file) , ">")
-
 	// the first position is empty because of the leading >
 	// so we iterate from 1:end and get the sequence
 	// here we parse the fasta and add it to the slice of seq

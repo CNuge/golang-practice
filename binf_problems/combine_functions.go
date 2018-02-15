@@ -1,6 +1,6 @@
 /*
 
-use the function in fasta_read to read in sequences,
+use the function in fasta_reader to read in sequences,
 then use the functions in gc_content to determine the GC content
 for the read in sequence.
 
