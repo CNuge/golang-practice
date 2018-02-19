@@ -4,17 +4,12 @@ import(
 	"fmt"
 )
 
-
 /* run through the use of:
 	1. structs x
 	2. slices / arrays x
 	3. maps x
 	4. pointers x
 */
-
-
-
-
 
 func main(){
 	// we can make a struct that holds any number of named data fields
