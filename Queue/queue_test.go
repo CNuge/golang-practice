@@ -32,7 +32,7 @@ func TestQueue(t *testing.T){
 	if reflect.DeepEqual(q.ord, compare_q.ord) != true {
 		t.Errorf("Adding to Queue incorrect: %v, want: %v.", q, compare_q)
 	}
-	print_output := fmt.Sprintf("%v", q.ord)
+	print_output := fmt.Sprintf("%v", q)
 	if print_output != "[7 8 9]"{
 		t.Errorf("Output string incorrect: %v, want: [7 8 9]", print_output)
 	}
