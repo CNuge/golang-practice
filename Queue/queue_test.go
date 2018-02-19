@@ -21,16 +21,16 @@ import(
 
 
 func TestQueue(t *testing.T){
-	q := queue{}
-	compare_q := queue{ord : []int {7,8,9}}
-	compare_q2 := queue{ord : []int {8,9}}
+	q := Queue{}
+	compare_q := Queue{ord : []int {7,8,9}}
+	compare_q2 := Queue{ord : []int {8,9}}
 	
 	q.Add(7)
 	q.Add(8)
 	q.Add(9)
 
 	if reflect.DeepEqual(q.ord, compare_q.ord) != true {
-		t.Errorf("Adding to queue incorrect: %v, want: %v.", q, compare_q)
+		t.Errorf("Adding to Queue incorrect: %v, want: %v.", q, compare_q)
 	}
 	print_output := fmt.Sprintf("%v", q.ord)
 	if print_output != "[7 8 9]"{

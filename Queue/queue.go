@@ -15,47 +15,32 @@ package queue
 
 import(
 	"fmt"
-
 	)
 
-
-type queue struct {
+type Queue struct {
 	ord []int
 }
 
-//representation of the queue, just the order
-func (q queue) String() string {
+// representation of the Queue, just the order
+func (q Queue) String() string {
 	return fmt.Sprintf("%v", q.ord)
 }
 
 // add an integer to the back of the list
-func (q *queue) Add(item int) []int {
+func (q *Queue) Add(item int) []int {
 	q.ord = append(q.ord, item)
 	return q.ord
 }
 
 // remove
-func (q *queue) Remove() int {
+func (q *Queue) Remove() int {
 	output := q.ord[0]
 	q.ord = q.ord[1:]
 	return output
 }
 
-// look at the first position in the queue
-func (q *queue) Peek() int {
+// look at the first position in the Queue
+func (q *Queue) Peek() int {
 	return q.ord[0]
 }
 
-
-func main(){
-	q := queue{}
-	q.Add(7)
-	q.Add(8)
-	q.Add(9)
-	fmt.Println(q)
-	fmt.Println(q.Peek())
-	fmt.Println(q)
-	fmt.Println(q.Remove())
-	fmt.Println(q.Peek())
-	fmt.Println(q)
-}
