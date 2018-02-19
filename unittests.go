@@ -1,0 +1,5 @@
+/*
+learn to write unittests in go
+first add them to the queue and fasta functions.
+
+*/
