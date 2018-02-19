@@ -6,6 +6,7 @@ Hopefully in the near future I will be in a position to progress to solving some
 
 Inspiration for the problems comes from:
 
+- [cracking the coding interview](http://www.crackingthecodinginterview.com/)
 - [exercism](http-//exercism.io/languages/go/exercises)
 - [the golang tour](https://tour.golang.org/)
 - the bioinformatics ones I'm making up off the top of my head
