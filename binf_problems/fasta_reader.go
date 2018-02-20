@@ -4,6 +4,12 @@ read in a fasta file and store it in a new data structure
 - this is the simple version that slurps up the entire file in memory and the parses
 	the string to create the sequence objects
 
+use the function in fasta_reader to read in sequences,
+then use the functions in gc_content to determine the GC content
+for the read in sequence.
+
+this will test my use of the read in/ import functions
+
 */
 
 package main
@@ -30,6 +36,18 @@ func (sq seq) len() int {
 // the function to return the sequence in fasta format when printed
 func (sq seq) String() string {
 	return fmt.Sprintf(">%v\n%v\n", sq.name, sq.sequence)
+}
+
+// gc content of a seq
+func (sq seq) PercGC() float64 {
+	bp := len sq.sequence
+	gc := 0
+	for _ , base := range sq.sequence{
+		if base == 'G' || base == 'C' {
+			gc++
+		}
+	}
+	return float64(gc)/float64(bp) * 100.0
 }
 
 // represent a list of sequences
