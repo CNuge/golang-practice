@@ -33,10 +33,15 @@ type transcript struct{
 	protein string
 }
 
+// stringer to print the RNA and AA side by side
+func (tr transcript) String() string{
+	return fmt.Sprintf("rna:%v\nprotein:%v\n", tr.rna, tr.protein)
+}
+
 // find the First AA after the 
 func (tr *transcript) Frame() int {
 	// start scan of rna with [0:3] if not AUG, add one to index
-	for index := 0 ; index < len(tr.rna); index++ {
+	for index := 0 ; index <= len(tr.rna) - 3 ; index++ {
 		if tr.rna[index:index + 3] == "AUG" {
 			start_pos := index + 3
 			return start_pos
@@ -48,32 +53,47 @@ func (tr *transcript) Frame() int {
 // start with an initial bp scan to find "AUG"
 func (tr *transcript) Translate() string {
 	start := tr.Frame() // find the first AA's start position
-	fmt.Printf("Start position: %v\n", start)
-	for pos := start ; pos < len(tr.rna) -3 ; pos = pos + 3 {
+	if start == len(tr.rna){
+		tr.protein = "..."
+		return tr.protein
+	}
+	stop_found := 0
+	for pos := start ; pos <= len(tr.rna) - 3 ; pos = pos + 3 {
 		aa := trans_map[tr.rna[pos: pos+3]]
 		if aa == "STOP" {
+			stop_found = 1
 			break
 		} else {
 			tr.protein = fmt.Sprintf("%v%v", tr.protein, aa )
 		}
 	}
+	if stop_found == 0 {
+		tr.protein = fmt.Sprintf("%v%v", tr.protein, "...")
+	}
 	return tr.protein
 }
 
 
-
 func main(){
-	transcript1 := transcript{ rna: "AAAUAUGGCCGCAGAGUAGGGGGG" }
-	transcript2 := transcript{ rna:  "AAUGUUUUUCCUAGCAAAAUGAAAA"}
+	transcript1 := transcript{ rna: "AAAUAUGGCCGCAGAGUAGGGGGG" } // AAE
+	transcript2 := transcript{ rna:  "AAUGUUUUUUUUUUUUUUUUUUUU"} // FFFFF...
+	transcript3 := transcript{ rna:  "AAUGUUUAAAUUUAAAGAAUAG" } // FKFKE
+	transcript4 := transcript{ rna:  "UUAAAUUUAAAGAAUAG" } // no start
+
 	transcript1.Translate()
 	fmt.Println(transcript1.protein)
 	transcript2.Translate()
 	fmt.Println(transcript2.protein)
-
+	transcript3.Translate()
+	fmt.Println(transcript3.protein)
+	transcript4.Translate()
+	fmt.Println(transcript4.protein)
+	fmt.Println("\n\n\n\n")
+	fmt.Println(transcript1)
 //errors to address:
 	// doesn't handle stop codons at the end of the string (this causes the error: tr.rna[pos: pos+3] )
-	// need to handle overflow (no stop codon)
-	// need to handle no start codon
-	// need to have a Stringer() method for 
+	// need to handle overflow (no stop codon) - done
+	// need to handle no start codon - done
+	// need to have a Stringer() method for  -done
 
 }
