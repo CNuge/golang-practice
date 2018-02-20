@@ -76,7 +76,7 @@ func (tr *transcript) Translate() string {
 
 func main(){
 	transcript1 := transcript{ rna: "AAAUAUGGCCGCAGAGUAGGGGGG" } // AAE
-	transcript2 := transcript{ rna:  "AAUGUUUUUUUUUUUUUUUUUUUU"} // FFFFF...
+	transcript2 := transcript{ rna:  "AAUGUUUUUUUUUUUUUUUUUUUU"} // no stop FFFFF...
 	transcript3 := transcript{ rna:  "AAUGUUUAAAUUUAAAGAAUAG" } // FKFKE
 	transcript4 := transcript{ rna:  "UUAAAUUUAAAGAAUAG" } // no start
 
