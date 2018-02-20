@@ -90,10 +90,4 @@ func main(){
 	fmt.Println(transcript4.protein)
 	fmt.Println("\n\n\n\n")
 	fmt.Println(transcript1)
-//errors to address:
-	// doesn't handle stop codons at the end of the string (this causes the error: tr.rna[pos: pos+3] )
-	// need to handle overflow (no stop codon) - done
-	// need to handle no start codon - done
-	// need to have a Stringer() method for  -done
-
 }
