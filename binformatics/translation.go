@@ -3,11 +3,12 @@ read in the an rna seqenece,
 find the reference frame by searching for a start codon 
 and transcribe it until a stop codon is reached
 */
+
 package main
 
 import(
 	"fmt"
-)
+	)
 
 // the translation map RNA -> AA
 var trans_map = map[string]string{"UUU":"F", "UUC":"F", "UUA":"L", "UUG":"L",
@@ -35,7 +36,7 @@ type transcript struct{
 
 // stringer to print the RNA and AA side by side
 func (tr transcript) String() string{
-	return fmt.Sprintf("rna:%v\nprotein:%v\n", tr.rna, tr.protein)
+	return fmt.Sprintf("rna: %v\nprotein: %v\n", tr.rna, tr.protein)
 }
 
 // find the First AA after the 

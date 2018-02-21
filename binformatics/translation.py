@@ -1,5 +1,8 @@
-
-
+"""
+read in the an rna seqenece,
+find the reference frame by searching for a start codon 
+and transcribe it until a stop codon is reached
+"""
 
 trans_map = {"UUU":"F", "UUC":"F", "UUA":"L", "UUG":"L",
 				"UCU":"S", "UCC":"S", "UCA":"S", "UCG":"S",
@@ -25,8 +28,10 @@ class Transcript():
 			stored as Transcript.protein """
 		self.rna = rna
 		self.protein = ""
-		
 		self.translate()
+
+	def __repr__(self):
+		return f"rna: {self.rna}\nprotein: {self.protein}\n"
 
 	def frame(self):
 		""" find the first bp following the start codon """
@@ -61,5 +66,4 @@ if __name__ == "__main__":
 	print(transcript3.protein)
 	transcript4 = Transcript("UUAAAUUUAAAGAAUAG") # no start
 	print(transcript4.protein)
-
-
+	print(transcript1)
