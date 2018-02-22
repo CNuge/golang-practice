@@ -22,13 +22,10 @@ func IsUnique(str string) bool {
 }
 
 
-
-
 func main(){
 	str1 := "CAMERON"
 	str2 := "SAMANTHA"
 
 	fmt.Println(IsUnique(str1))
 	fmt.Println(IsUnique(str2))
-
 }
