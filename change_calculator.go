@@ -68,7 +68,7 @@ func (tr *Transaction) ChangeBreakdown() string {
 	}
 	// sort the keys
 	keys := key_sort(denominations)
-
+	// pull the amount to break down
     total_breakdown := tr.change_amount
 	for i := len(keys)-1; i >= 0; i-- {
 		coin := float64(keys[i])
