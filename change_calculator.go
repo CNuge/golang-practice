@@ -86,5 +86,19 @@ func main(){
 	test1 := Transaction{ cost: 1.75, paid: 5.00}
 	fmt.Println(test1)
 	fmt.Println(test1.ChangeBreakdown())
-	fmt.Println(math.Floor(3.25 / 2))
+
+	test2 := Transaction{ cost: 1.75, paid: 1.00}
+	fmt.Println(test2)
+	fmt.Println(test2.ChangeBreakdown())
+
+	test3 := Transaction{ cost : 117.38, paid: 200.}
+	fmt.Println(test3)
+	fmt.Println(test3.ChangeBreakdown())
+
+
+	test4 := Transaction{ cost : 17.32, paid: 20.0}
+	fmt.Println(test4)
+	fmt.Println(test4.ChangeBreakdown())
+
+
 }
