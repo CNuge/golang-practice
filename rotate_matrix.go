@@ -8,6 +8,7 @@ package main
 
 import(
 	"fmt"
+	"strings"
 	)
 
 
@@ -17,12 +18,27 @@ type Matrix struct{
 	data [][]int
 }
 
+func (m Matrix) String() string {
+	outstring := ""
+	for _, i := range m.data {
+		line_string := fmt.Sprintf("%v\n",  i)
+		s := []string{outstring, line_string}
+		outstring = strings.Join(s , "")
+	}
+	return outstring
+}
+
+
 func (m *Matrix) Fill(row []int) [][]int {
 	m.data = append(m.data, row)
 	return m.data
 }
 
+
 //rotate clockwise
+//func (m *Matrix) Rotate() [][]int {
+
+//}
 
 // make a new empty set of slices (one empty for each original ith col)
 
@@ -55,7 +71,7 @@ func main(){
 	test_arr1.Fill(row3)
 
 	fmt.Println(test_arr1)
-
+	fmt.Println(test_arr1.data[0])
 }
 
 
