@@ -36,20 +36,23 @@ func (m *Matrix) Fill(row []int) [][]int {
 
 
 //rotate clockwise
-//func (m *Matrix) Rotate() [][]int {
-
-//}
-
-// make a new empty set of slices (one empty for each original ith col)
+func (m *Matrix) Rotate() [][]int {
+	// size has the rows and columns flipped from the original
+	new_mat := [len(m.data[0])][len(m.data)]int{}
 
 // iterate through the reversed i, forward j positions
-
 // to the new column eqaul to the old jth row, append the original i,j position
 
 // essentially starting the columns sideways and then appeanding the data
 // moving from bottom right to top left
 
 // take the i, j coordinates of the matrix
+
+
+}
+
+
+
 
 func main(){
 	//create a slice of slices
