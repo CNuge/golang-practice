@@ -36,13 +36,12 @@ func (m *Matrix) Fill(row []int) [][]int {
 
 //rotate the matrix clockwise
 func (m *Matrix) Rotate() [][]int {
-	// size has the rows and columns flipped from the original
+	// initiate a new matrix
 	new_mat := [][]int{}
-	// initiate the necessary # of rows
-	for i := 0; i< len(m.data[0]); i++  {
+	// initiate the necessary # of rows == num cols from original
+	for i := 0; i < len(m.data[0]); i++ {
 		new_mat = append(new_mat, []int{})
 	}
-
 	// iterate through the reversed i, forward j positions
 	// essentially starting the columns sideways on the left and appending to the rows
 	for i := len(m.data) -1 ; i >=0 ; i-- {
@@ -64,18 +63,14 @@ func main(){
 	row3 := []int{7,8,9,}
 	row4 := []int{10,11,12,}
 
-
 	test_arr1 := Matrix{}
 	test_arr1.Fill(row1)
 	test_arr1.Fill(row2)
 	test_arr1.Fill(row3)
 	test_arr1.Fill(row4)
 
-
 	fmt.Println(test_arr1)
 
 	test_arr1.Rotate()
 	fmt.Println(test_arr1)
 }
-
-
