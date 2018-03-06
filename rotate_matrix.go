@@ -1,7 +1,5 @@
 /*
-given an nxn matrix, write a method to rotate it 90 degrees.
-
-can you do it in place?
+given an nxn matrix, write a method to rotate it 90 degrees to the right.
 */
 
 package main
@@ -12,12 +10,13 @@ import(
 	)
 
 
-// make a structure that is a slice of slices
-
+// a structure that is a slice of slices
+// it stores the two dimensional matrix
 type Matrix struct{
 	data [][]int
 }
 
+// represents the 2d matrix with each row on a separate line
 func (m Matrix) String() string {
 	outstring := ""
 	for _, i := range m.data {
@@ -28,53 +27,55 @@ func (m Matrix) String() string {
 	return outstring
 }
 
-
+// add a new row to the matrix
 func (m *Matrix) Fill(row []int) [][]int {
 	m.data = append(m.data, row)
 	return m.data
 }
 
 
-//rotate clockwise
+//rotate the matrix clockwise
 func (m *Matrix) Rotate() [][]int {
 	// size has the rows and columns flipped from the original
-	new_mat := [len(m.data[0])][len(m.data)]int{}
+	new_mat := [][]int{}
+	// initiate the necessary # of rows
+	for i := 0; i< len(m.data[0]); i++  {
+		new_mat = append(new_mat, []int{})
+	}
 
-// iterate through the reversed i, forward j positions
-// to the new column eqaul to the old jth row, append the original i,j position
-
-// essentially starting the columns sideways and then appeanding the data
-// moving from bottom right to top left
-
-// take the i, j coordinates of the matrix
-
-
+	// iterate through the reversed i, forward j positions
+	// essentially starting the columns sideways on the left and appending to the rows
+	for i := len(m.data) -1 ; i >=0 ; i-- {
+		for j, dat := range m.data[i] {
+			new_mat[j] =  append(new_mat[j], dat)
+		}
+	}
+	m.data = new_mat
+	return m.data
 }
 
 
 
 
 func main(){
-	//create a slice of slices
-	test_arr := [][]int{}
 	// append the rows into the slice
 	row1 := []int{1,2,3,}
 	row2 := []int{4,5,6,}
 	row3 := []int{7,8,9,}
+	row4 := []int{10,11,12,}
 
-	test_arr = append(test_arr,row1)
-	test_arr = append(test_arr,row2)
-	test_arr = append(test_arr,row3)
-
-	fmt.Println(test_arr)
 
 	test_arr1 := Matrix{}
 	test_arr1.Fill(row1)
 	test_arr1.Fill(row2)
 	test_arr1.Fill(row3)
+	test_arr1.Fill(row4)
+
 
 	fmt.Println(test_arr1)
-	fmt.Println(test_arr1.data[0])
+
+	test_arr1.Rotate()
+	fmt.Println(test_arr1)
 }
 
 
