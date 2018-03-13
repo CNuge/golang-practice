@@ -1,5 +1,5 @@
 package main
-
+//note stack is imported via relative path
 import(
 	"fmt"
 	"./stack"
