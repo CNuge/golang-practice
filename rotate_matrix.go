@@ -12,7 +12,7 @@ import(
 
 // a structure that is a slice of slices
 // it stores the two dimensional matrix
-type Matrix struct{
+type Matrix struct {
 	data [][]int
 }
 
@@ -73,4 +73,13 @@ func main(){
 
 	test_arr1.Rotate()
 	fmt.Println(test_arr1)
+
+	test_arr2 := Matrix{ 
+	[][]int{{1,2,3,}, {4,5,6,}, {7,8,9,}, {10,11,12,}} }
+
+	fmt.Println(test_arr2)
+
+	test_arr2.Rotate()
+	fmt.Println(test_arr2)
+
 }

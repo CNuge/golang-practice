@@ -40,7 +40,7 @@ func (sq seq) String() string {
 
 // gc content of a seq
 func (sq seq) PercGC() float64 {
-	bp := len sq.sequence
+	bp := len(sq.sequence)
 	gc := 0
 	for _ , base := range sq.sequence{
 		if base == 'G' || base == 'C' {

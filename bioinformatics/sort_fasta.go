@@ -1,5 +1,0 @@
-/*
-sort a fasta file by the names of the sequences
-
-output a new version
-*/
