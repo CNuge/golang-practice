@@ -13,18 +13,17 @@ code one with these operators:
 
 package queue
 
-import(
+import (
 	"fmt"
-	"testing"
 	"reflect"
-	)
+	"testing"
+)
 
-
-func TestQueue(t *testing.T){
+func TestQueue(t *testing.T) {
 	q := Queue{}
-	compare_q := Queue{ord : []int {7,8,9}}
-	compare_q2 := Queue{ord : []int {8,9}}
-	
+	compare_q := Queue{ord: []int{7, 8, 9}}
+	compare_q2 := Queue{ord: []int{8, 9}}
+
 	q.Add(7)
 	q.Add(8)
 	q.Add(9)
@@ -33,7 +32,7 @@ func TestQueue(t *testing.T){
 		t.Errorf("Adding to Queue incorrect: %v, want: %v.", q, compare_q)
 	}
 	print_output := fmt.Sprintf("%v", q)
-	if print_output != "[7 8 9]"{
+	if print_output != "[7 8 9]" {
 		t.Errorf("Output string incorrect: %v, want: [7 8 9]", print_output)
 	}
 	if q.Peek() != 7 {
@@ -50,4 +49,3 @@ func TestQueue(t *testing.T){
 		t.Errorf("Remove() didn't change the queue!\n %v, want: [8 9]", print_output)
 	}
 }
-

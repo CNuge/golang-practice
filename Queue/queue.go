@@ -13,9 +13,9 @@ code one with these operators:
 
 package queue
 
-import(
+import (
 	"fmt"
-	)
+)
 
 type Queue struct {
 	ord []int
@@ -43,4 +43,3 @@ func (q *Queue) Remove() int {
 func (q *Queue) Peek() int {
 	return q.ord[0]
 }
-

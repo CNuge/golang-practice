@@ -48,7 +48,7 @@ func homology_string(seq1, seq2 string) []string {
 
 func homology_count(homo_string []string) int {
 	matches := 0
-	for _, v := range homo_string{
+	for _, v := range homo_string {
 		if v == " " {
 			matches++
 		}
