@@ -4,11 +4,12 @@ given two strings, see if one is a permuation of the other
 
 package main
 
-import ( 
+import (
 	"fmt"
-	"strings"
 	"reflect"
-	"sort")
+	"sort"
+	"strings"
+)
 
 /*
  how to sort an array in standard library:
@@ -16,9 +17,8 @@ import (
 	sort.Strings(x)
 	fmt.Println(x)
 sort:
-https://golang.org/pkg/sort/ 
+https://golang.org/pkg/sort/
 */
-
 
 // sort and test equality
 func StrEq(str1, str2 string) bool {
@@ -31,7 +31,7 @@ func StrEq(str1, str2 string) bool {
 	return reflect.DeepEqual(s_str1, s_str2)
 }
 
-func main(){
+func main() {
 	str1 := "CAM NUGE"
 	str2 := "MAC NUGE"
 	str3 := "GREG NUGE"
