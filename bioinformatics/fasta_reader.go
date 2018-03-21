@@ -14,17 +14,17 @@ this will test my use of the read in/ import functions
 
 package main
 
-import(
-	"fmt"
+import (
 	"flag"
+	"fmt"
+	"io/ioutil" //input/output utilities https://golang.org/pkg/io/ioutil/
+	"log"       // for logging errors
 	"strings"
-	"log" // for logging errors
-	"io/ioutil" //input/output utilities https://golang.org/pkg/io/ioutil/ 
 )
 
 // represent a single sequence
 type seq struct {
-	name string
+	name     string
 	sequence string
 }
 
@@ -42,12 +42,12 @@ func (sq seq) String() string {
 func (sq seq) PercGC() float64 {
 	bp := len(sq.sequence)
 	gc := 0
-	for _ , base := range sq.sequence{
+	for _, base := range sq.sequence {
 		if base == 'G' || base == 'C' {
 			gc++
 		}
 	}
-	return float64(gc)/float64(bp) * 100.0
+	return float64(gc) / float64(bp) * 100.0
 }
 
 // represent a list of sequences
@@ -61,19 +61,18 @@ func (fa *Fasta) AddItem(item seq) []seq {
 	return fa.entries
 }
 
-
-// this structure stores the length data for all the 
-type len_check struct{
-		name string 
-		length int
-	}
+// this structure stores the length data for all the
+type len_check struct {
+	name   string
+	length int
+}
 
 func (fa *Fasta) lenAll() []len_check {
 	output := []len_check{}
-	for _ , entry := range fa.entries{
-		data := len_check{name : entry.name, length : len(entry.sequence)}
+	for _, entry := range fa.entries {
+		data := len_check{name: entry.name, length: len(entry.sequence)}
 		output = append(output, data)
-		}
+	}
 	return output
 }
 
@@ -82,8 +81,8 @@ func ParseFasta(fasta_entry string) seq {
 	entry := strings.Split(fasta_entry, "\n")
 	// first position is the name,
 	// join everything but the first line into a single string
-	return seq{ name : entry[0],
-				sequence : strings.Join(entry[1:], "")}
+	return seq{name: entry[0],
+		sequence: strings.Join(entry[1:], "")}
 }
 
 func ReadFasta(filename string) Fasta {
@@ -95,27 +94,27 @@ func ReadFasta(filename string) Fasta {
 		log.Fatal(err)
 	}
 	// split the input file on the new seq characters
-	data := strings.Split(string(file) , ">")
+	data := strings.Split(string(file), ">")
 	// the first position is empty because of the leading >
 	// so we iterate from 1:end and get the sequence
 	// here we parse the fasta and add it to the slice of seq
-	for _ , entry := range data[1:] {
+	for _, entry := range data[1:] {
 		fileseqs.AddItem(ParseFasta(entry))
 	}
 	return fileseqs
 }
 
 func main() {
-	// this is the slice to hold all of the entries 
+	// this is the slice to hold all of the entries
 	allfasta := Fasta{}
 	// parse the command line arguments
-	flag.Parse() 
+	flag.Parse()
 
 	// iterate through all of the passed in files using flag.Args()
 	for _, filename := range flag.Args() {
 		fasta_seq := ReadFasta(filename)
 		allfasta.entries = append(allfasta.entries, fasta_seq.entries...)
-		// see https://golang.org/ref/spec#Appending_and_copying_slices 
+		// see https://golang.org/ref/spec#Appending_and_copying_slices
 		// for ... explination
 	}
 
@@ -131,4 +130,3 @@ func main() {
 	fmt.Println(all_len_data[0].length)
 
 }
-

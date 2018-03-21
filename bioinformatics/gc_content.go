@@ -1,6 +1,6 @@
 package main
 
-import(
+import (
 	"fmt"
 )
 
@@ -10,19 +10,19 @@ type dna_seq string
 func gc_content(dna_seq string) float64 {
 	total_bp := len(dna_seq)
 	gc := 0
-	for _ , char := range dna_seq{
+	for _, char := range dna_seq {
 		if char == 'G' || char == 'C' {
 			gc++
 		}
-	} 
-	return float64(gc)/float64(total_bp) * 100.0
+	}
+	return float64(gc) / float64(total_bp) * 100.0
 }
 
-func main(){
-	seq1 := "ATGAT" // 1 gc .2
-	seq2 := "ATGC" // 2 gcs .5
-	seq3 := "GCCTTTTTT" //3 gcs .33
-	seq4 := "GCGCGCGCGCGCGC"// 100%
+func main() {
+	seq1 := "ATGAT"          // 1 gc .2
+	seq2 := "ATGC"           // 2 gcs .5
+	seq3 := "GCCTTTTTT"      //3 gcs .33
+	seq4 := "GCGCGCGCGCGCGC" // 100%
 
 	fmt.Println(gc_content(seq1))
 	fmt.Println(gc_content(seq2))
@@ -51,7 +51,7 @@ func gc_content(dna_seq string) float64 {
 		default:
 			continue
 		}
-	} 
+	}
 	return float64(gc)/float64(total_bp) * 100.0
 }
 */
