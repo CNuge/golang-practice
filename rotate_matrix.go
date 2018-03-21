@@ -4,11 +4,10 @@ given an nxn matrix, write a method to rotate it 90 degrees to the right.
 
 package main
 
-import(
+import (
 	"fmt"
 	"strings"
-	)
-
+)
 
 // a structure that is a slice of slices
 // it stores the two dimensional matrix
@@ -20,9 +19,9 @@ type Matrix struct {
 func (m Matrix) String() string {
 	outstring := ""
 	for _, i := range m.data {
-		line_string := fmt.Sprintf("%v\n",  i)
+		line_string := fmt.Sprintf("%v\n", i)
 		s := []string{outstring, line_string}
-		outstring = strings.Join(s , "")
+		outstring = strings.Join(s, "")
 	}
 	return outstring
 }
@@ -32,7 +31,6 @@ func (m *Matrix) Fill(row []int) [][]int {
 	m.data = append(m.data, row)
 	return m.data
 }
-
 
 //rotate the matrix clockwise
 func (m *Matrix) Rotate() [][]int {
@@ -44,24 +42,21 @@ func (m *Matrix) Rotate() [][]int {
 	}
 	// iterate through the reversed i, forward j positions
 	// essentially starting the columns sideways on the left and appending to the rows
-	for i := len(m.data) -1 ; i >=0 ; i-- {
+	for i := len(m.data) - 1; i >= 0; i-- {
 		for j, dat := range m.data[i] {
-			new_mat[j] =  append(new_mat[j], dat)
+			new_mat[j] = append(new_mat[j], dat)
 		}
 	}
 	m.data = new_mat
 	return m.data
 }
 
-
-
-
-func main(){
+func main() {
 	// append the rows into the slice
-	row1 := []int{1,2,3,}
-	row2 := []int{4,5,6,}
-	row3 := []int{7,8,9,}
-	row4 := []int{10,11,12,}
+	row1 := []int{1, 2, 3}
+	row2 := []int{4, 5, 6}
+	row3 := []int{7, 8, 9}
+	row4 := []int{10, 11, 12}
 
 	test_arr1 := Matrix{}
 	test_arr1.Fill(row1)
@@ -74,8 +69,8 @@ func main(){
 	test_arr1.Rotate()
 	fmt.Println(test_arr1)
 
-	test_arr2 := Matrix{ 
-	[][]int{{1,2,3,}, {4,5,6,}, {7,8,9,}, {10,11,12,}} }
+	test_arr2 := Matrix{
+		[][]int{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}, {10, 11, 12}}}
 
 	fmt.Println(test_arr2)
 
