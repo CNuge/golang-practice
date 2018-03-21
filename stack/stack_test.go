@@ -5,18 +5,16 @@ this contains the unit tests for the stack package
 
 package stack
 
-
-import(
+import (
 	"fmt"
-	"testing"
 	"reflect"
-	)
+	"testing"
+)
 
-
-func TestStack(t *testing.T){
+func TestStack(t *testing.T) {
 	s := Stack{}
-	compare_stack := Stack{ ord: []int{9, 1, 6} , min: 1}
-	compare_stack2 := Stack{ ord: []int{9, 1} , min: 1}
+	compare_stack := Stack{ord: []int{9, 1, 6}, min: 1}
+	compare_stack2 := Stack{ord: []int{9, 1}, min: 1}
 	s.Push(9)
 	s.Push(1)
 	s.Push(6)
@@ -25,7 +23,7 @@ func TestStack(t *testing.T){
 	if reflect.DeepEqual(s.ord, compare_stack.ord) != true {
 		t.Errorf("Stacks not equal: %v, want: %v.", s, compare_stack)
 	}
-	// test the Min method 
+	// test the Min method
 	if s.Min() != 1 {
 		t.Errorf("Stacks min not equal: %v, want: 1.", s.Min())
 	}
@@ -39,8 +37,8 @@ func TestStack(t *testing.T){
 	}
 	// test that Stringer is same as printing the ord
 	print_string := fmt.Sprintf("%v", s)
-	compare_print := fmt.Sprintf("%v",s.ord)
+	compare_print := fmt.Sprintf("%v", s.ord)
 	if reflect.DeepEqual(print_string, compare_print) != true {
-		t.Errorf("Stringer not working. Print strings not equal: %v, want: %v.", s, compare_stack2)		
+		t.Errorf("Stringer not working. Print strings not equal: %v, want: %v.", s, compare_stack2)
 	}
 }

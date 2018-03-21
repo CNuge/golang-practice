@@ -11,7 +11,7 @@ recall stack is last in first out
 
 package stack
 
-import(
+import (
 	"fmt"
 )
 
@@ -27,7 +27,7 @@ func (s Stack) String() string {
 
 // add integer to the top of the stack
 func (s *Stack) Push(item int) []int {
-	if len(s.ord) == 0{
+	if len(s.ord) == 0 {
 		s.min = item
 	}
 	if s.min > item {
@@ -40,7 +40,7 @@ func (s *Stack) Push(item int) []int {
 // pop the top integer in the stack
 func (s *Stack) Pop() int {
 	output := s.ord[len(s.ord)-1]
-	s.ord = s.ord[0:len(s.ord)-1]
+	s.ord = s.ord[0 : len(s.ord)-1]
 	return output
 }
 
@@ -48,4 +48,3 @@ func (s *Stack) Pop() int {
 func (s *Stack) Min() int {
 	return s.min
 }
-
