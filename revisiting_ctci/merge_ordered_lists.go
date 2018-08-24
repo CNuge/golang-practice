@@ -1,37 +1,35 @@
 package main
 
-import(
+import (
 	"fmt"
 )
 
 type Ind struct {
-	id		string
-	score	int
+	id    string
+	score int
 }
 
-
 // take two sorted slices of structs with id names and scores (high to low)
-// merge them into a single ordered list with no duplicates 
+// merge them into a single ordered list with no duplicates
 func MergeLists(l1, l2 []Ind) []Ind {
 
 	outlist := []Ind{}
 	obvs_ids := make(map[string]int)
 
-
-	for ; len(l1) > 0 && len(l2) > 0 ; {
+	for len(l1) > 0 && len(l2) > 0 {
 		if len(l1) == 0 {
 			//loop through 2, add all of it to out and return
 			for _, i := range l2 {
-				if obvs_ids[i.id] == 0{
+				if obvs_ids[i.id] == 0 {
 					obvs_ids[i.id] = 1
-					outlist = append(outlist , i)
+					outlist = append(outlist, i)
 				}
 			}
 			return outlist
 		} else if len(l2) == 0 {
 			// loop through 1, add all of it to out and return
-			for _, i := range l1{
-				if obvs_ids[i.id] == 0{
+			for _, i := range l1 {
+				if obvs_ids[i.id] == 0 {
 					obvs_ids[i.id] = 1
 					outlist = append(outlist, i)
 				}
@@ -43,26 +41,26 @@ func MergeLists(l1, l2 []Ind) []Ind {
 			if obvs_ids[l1[0].id] == 0 {
 				obvs_ids[l1[0].id] = 1
 
-				if l1[0].score >= l2[0].score{
+				if l1[0].score >= l2[0].score {
 					outlist = append(outlist, l1[0])
 					l1 = l1[1:]
-					l2 = l2[1:]			
+					l2 = l2[1:]
 					// else accounts for ties
-				}else {
+				} else {
 					outlist = append(outlist, l2[0])
 					l1 = l1[1:]
-					l2 = l2[1:]			
+					l2 = l2[1:]
 				}
-			} 
+			}
 
 		} else if l1[0].score > l2[0].score {
 			if obvs_ids[l1[0].id] == 0 {
 				obvs_ids[l1[0].id] = 1
 				outlist = append(outlist, l1[0])
 				l1 = l1[1:]
-			} 
-			
-		} else if l1[0].score < l2[0].score{
+			}
+
+		} else if l1[0].score < l2[0].score {
 			if obvs_ids[l2[0].id] == 0 {
 				obvs_ids[l2[0].id] = 1
 				outlist = append(outlist, l2[0])
@@ -78,15 +76,14 @@ func MergeLists(l1, l2 []Ind) []Ind {
 				obvs_ids[l2[0].id] = 1
 				outlist = append(outlist, l2[0])
 				l2 = l2[1:]
-			} 
+			}
 		}
 
 	}
 	return outlist
 }
 
-
-func main(){
+func main() {
 
 	list1 := []Ind{
 		Ind{"Dave", 99},
@@ -100,7 +97,6 @@ func main(){
 		Ind{"Doug", 79},
 		Ind{"Jeff", 77},
 	}
-
 
 	fmt.Println(MergeLists(list1, list2))
 
