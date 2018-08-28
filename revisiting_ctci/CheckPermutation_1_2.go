@@ -1,0 +1,3 @@
+/*
+given two strings check to see if one is a permutation of the other
+*/
