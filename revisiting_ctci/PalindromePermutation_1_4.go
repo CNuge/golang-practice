@@ -10,25 +10,24 @@ rcarace - is a permutation of racecar, which is a palindrome
 
 package main
 
-
-import(
+import (
 	"fmt"
 )
 
-func IsPalindromePerm(s string ) bool{
+func IsPalindromePerm(s string) bool {
 	char_map := make(map[rune]int)
 
-	for _ , i := range(s){
+	for _, i := range s {
 		char_map[i] += 1
 	}
 
 	odd_count := 0
 
-	for _ , v := range char_map {
+	for _, v := range char_map {
 		if (v % 2) != 0 {
 			odd_count += 1
 		}
-		if odd_count > 1{
+		if odd_count > 1 {
 			return false
 		}
 	}
@@ -36,8 +35,7 @@ func IsPalindromePerm(s string ) bool{
 	return true
 }
 
-
-func main(){
+func main() {
 
 	s1 := "rcarace"
 	fmt.Println(s1)
@@ -57,11 +55,9 @@ func main(){
 
 // iterate through the characters
 
-
 // if next character equal the current character, add to count
-	
-// if not, finalize previous count, is it odd?
-	// if odd add 1 to odd count, if odd count > 1 return false
-	
-	// continue the iteration through the character sets
 
+// if not, finalize previous count, is it odd?
+// if odd add 1 to odd count, if odd count > 1 return false
+
+// continue the iteration through the character sets
