@@ -50,14 +50,3 @@ func main() {
 	fmt.Println(IsPalindromePerm(s3))
 
 }
-
-// take the string, split into characters and sort
-
-// iterate through the characters
-
-// if next character equal the current character, add to count
-
-// if not, finalize previous count, is it odd?
-// if odd add 1 to odd count, if odd count > 1 return false
-
-// continue the iteration through the character sets
