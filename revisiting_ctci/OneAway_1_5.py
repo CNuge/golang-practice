@@ -5,9 +5,6 @@ given two strings, write a method to determine if they are one (or less)
 change (insertion, deletion, replacement) away from one another
 """
 
-
-
-
 def OneAway(s1, s2):
 	""" take two input strings, return true 
 		if they are one change different from one another,
