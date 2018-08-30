@@ -1,4 +1,3 @@
-
 /*
 take a string and compress it into repeated digit counts:
 
@@ -22,9 +21,9 @@ func CompressString(s string) string {
 	var current_count int
 
 	for _, char := range s {
-		if char == current_letter{
+		if char == current_letter {
 			current_count += 1
-		}else{
+		} else {
 			if current_count != 0 {
 				addition := fmt.Sprintf("%v%v", string(current_letter), current_count)
 				outstring += addition
@@ -37,12 +36,11 @@ func CompressString(s string) string {
 	addition := fmt.Sprintf("%v%v", string(current_letter), current_count)
 	outstring += addition
 
-	if len(outstring) < len(s){
+	if len(outstring) < len(s) {
 		return outstring
 	}
 	return s
 }
-
 
 func main() {
 
