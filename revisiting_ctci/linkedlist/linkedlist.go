@@ -11,60 +11,44 @@ import (
 
 type Node struct {
 	data int
-	next int
-	prev int
+	next *Node
+	prev *Node
 }
 
 func (n Node) String() string {
-	return fmt.Sprintf("%v", n.data)
-}
+	outstring := fmt.Sprintf("%v", n.data)
 
-
-// need a linked list data structure
-// composed of nodes which are linked to one another via .next
-// the head of the linked list is node 1
-type LinkedList []Node
-
-// string method to represent a linked list
-// connects the nodes using ->
-func (ll LinkedList) String() string {
-	outstring := ""
-	for e, i := range ll {
-		outstring = fmt.Sprintf("%v%v", outstring, i)
-		if e != (len(ll) - 1) {
-			outstring = fmt.Sprintf("%v%v", outstring, " -> ")
+	for n.next != nil  {
+		outstring = fmt.Sprintf("%v%v", outstring, " -> ")			
+		n = *n.next
+		outstring = fmt.Sprintf("%v%v", outstring, n.data)			
 		}
-	}
-	return fmt.Sprintf("%v", outstring)
+	return outstring
 }
+
 
 // method to append to a linked list
 // take a new number and add it to the linked list
-func (ll *LinkedList) Add(new_int int) {
+func (n *Node) Add(new_int int) {
 	
-	n := Node{data: new_int}
+	new_n := Node{data: new_int}
 		
-	if len(*ll) > 0 {
-		n.prev =  (*ll)[len((*ll))-1].data
-
-		(*ll)[len(*ll)-1].next = n.data
+	for n.next != nil {				
+		n = n.next
 	}
-
-	(*ll) = append((*ll), n)
-
+	n.next = &new_n
+	new_n.prev = n
 }
 
 // method to append to front of a linked list
-func (ll *LinkedList) FrontAdd(new_int int) {
-	n := Node{data: new_int}
+func (n *Node) FrontAdd(new_int int)  {
+	new_n := Node{data: new_int}
 
-	if len(*ll) > 0{
-		n.next =  (*ll)[0].data
-		(*ll)[0].prev = n.data
+	for n.prev != nil {		
+		n = n.prev
 	}
-
-	new_ll := LinkedList{n}
-	(*ll) = append(new_ll, (*ll)...)
+	n.prev = &new_n
+	new_n.next = n
 
 }
 
