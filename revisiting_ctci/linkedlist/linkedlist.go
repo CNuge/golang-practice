@@ -1,18 +1,15 @@
 package linkedlist
 
-
-import(
+import (
 	"fmt"
-	
 )
-
 
 //node struct
 // .data an integer
 // .next which references next position (also a node)
 // .prev which references previous position (also a node)
 
-type Node struct{
+type Node struct {
 	data int
 	next int
 	prev int
@@ -23,12 +20,11 @@ type Node struct{
 // the head of the linked list is node 1
 type LinkedList []Node
 
-
-// string method to represent a linked list 
+// string method to represent a linked list
 // connects the nodes using ->
-func (ll LinkedList) String() string{
-	outstring := ""  
-	for e , i := range ll {
+func (ll LinkedList) String() string {
+	outstring := ""
+	for e, i := range ll {
 		outstring += string(i.data)
 		if e != (len(ll) - 1) {
 			outstring += " -> "
@@ -39,8 +35,8 @@ func (ll LinkedList) String() string{
 // method to append to a linked list
 // take a new number and add it to the linked list
 func (ll *LinkedList) Add(new_int int) {
-	n := Node{data : new_int
-				prev : ll[len(ll)-1]}
+	n := Node{data: new_int,
+		prev: ll[len(ll)-1]}
 
 	ll[len(ll)-1].next = n
 
@@ -48,11 +44,10 @@ func (ll *LinkedList) Add(new_int int) {
 
 }
 
-
 // method to append to front of a linked list
-func (ll *LinkedList) FrontAdd(new_int int){
-	n := Node{data : new_int
-			next : ll[0]}
+func (ll *LinkedList) FrontAdd(new_int int) {
+	n := Node{data: new_int,
+		next: ll[0]}
 
 	ll[0].prev = n
 
@@ -60,5 +55,3 @@ func (ll *LinkedList) FrontAdd(new_int int){
 	ll = append(new_ll, ll...)
 
 }
-
-
