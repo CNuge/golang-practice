@@ -5,23 +5,23 @@ import (
 )
 
 //node struct
-// .data an integer
-// .next which references next position (also a node)
-// .prev which references previous position (also a node)
+// .Data an integer
+// .Next which references.Next position (also a node)
+// .Prev which references.Previous position (also a node)
 
 type Node struct {
-	data int
-	next *Node
-	prev *Node
+	Data int
+	Next *Node
+	Prev *Node
 }
 
 func (n Node) String() string {
-	outstring := fmt.Sprintf("%v", n.data)
+	outstring := fmt.Sprintf("%v", n.Data)
 
-	for n.next != nil  {
+	for n.Next != nil  {
 		outstring = fmt.Sprintf("%v%v", outstring, " -> ")			
-		n = *n.next
-		outstring = fmt.Sprintf("%v%v", outstring, n.data)			
+		n = *n.Next
+		outstring = fmt.Sprintf("%v%v", outstring, n.Data)			
 		}
 	return outstring
 }
@@ -31,24 +31,24 @@ func (n Node) String() string {
 // take a new number and add it to the linked list
 func (n *Node) Add(new_int int) {
 	
-	new_n := Node{data: new_int}
+	new_n := Node{Data: new_int}
 		
-	for n.next != nil {				
-		n = n.next
+	for n.Next != nil {				
+		n = n.Next
 	}
-	n.next = &new_n
-	new_n.prev = n
+	n.Next = &new_n
+	new_n.Prev = n
 }
 
 // method to append to front of a linked list
 func (n *Node) FrontAdd(new_int int)  {
-	new_n := Node{data: new_int}
+	new_n := Node{Data: new_int}
 
-	for n.prev != nil {		
-		n = n.prev
+	for n.Prev != nil {		
+		n = n.Prev
 	}
-	n.prev = &new_n
-	new_n.next = n
+	n.Prev = &new_n
+	new_n.Next = n
 
 }
 
