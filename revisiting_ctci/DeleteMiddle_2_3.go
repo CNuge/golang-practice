@@ -2,7 +2,7 @@
 given access only to a node in the middle of a linked list,
 remove that node from the linked list.
 
-i.e. 
+i.e.
 
 1 -> 2 -> 3 -> 4 -> 5
 given access to 3rd position
@@ -14,9 +14,9 @@ and make the list:
 
 package main
 
-import(
-	"fmt"
+import (
 	"./linkedlist"
+	"fmt"
 )
 
 //Remove the node that is currently being viewed from the linked list
@@ -32,10 +32,8 @@ func DelNode(n linkedlist.Node) linkedlist.Node {
 
 }
 
-
-
-func main(){
-	data := linkedlist.Node{Data : 4}
+func main() {
+	data := linkedlist.Node{Data: 4}
 
 	data.Add(6)
 	data.Add(3)
