@@ -7,7 +7,7 @@ import (
 
 func TestLinkedList(t *testing.T) {
 
-	test_ll := Node{data: 1}
+	test_ll := Node{Data: 1}
 
 	test_ll.Add(1)
 	test_ll.Add(3)
@@ -24,8 +24,9 @@ func TestLinkedList(t *testing.T) {
 
 	rep_string2 := "7 -> 1 -> 1 -> 3 -> 8"
 
-	if reflect.DeepEqual(test_ll.Prev.String(), rep_string2) != true {
-		t.Errorf("Front add did not perform correctly.\nHave:\n%v\nwant:\n%v.", test_ll, rep_string2)
+	test2_ll2 := test_ll.Front()
+	if reflect.DeepEqual(test2_ll2.String(), rep_string2) != true {
+		t.Errorf("Front add did not perform correctly.\nHave:\n%v\nwant:\n%v", test2_ll2, rep_string2)
 
 	}
 

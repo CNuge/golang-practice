@@ -11,3 +11,36 @@ and make the list:
 
 
 */
+
+package main
+
+import(
+	"fmt"
+	"./linkedlist"
+)
+
+
+// take a Node and scroll through the linked list
+// to return the front position
+
+
+func DelNode(n Node) Node {
+
+}
+
+
+
+func main(){
+	data := linkedlist.Node{Data : 4}
+
+	data.Add(6)
+	data.Add(3)
+	data.Add(1)
+	data.Add(3)
+	data.FrontAdd(2)
+	data.FrontAdd(2)
+	data.FrontAdd(2)
+
+	fmt.Println(data.Front())
+
+}

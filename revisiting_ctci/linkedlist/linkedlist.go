@@ -18,22 +18,21 @@ type Node struct {
 func (n Node) String() string {
 	outstring := fmt.Sprintf("%v", n.Data)
 
-	for n.Next != nil  {
-		outstring = fmt.Sprintf("%v%v", outstring, " -> ")			
+	for n.Next != nil {
+		outstring = fmt.Sprintf("%v%v", outstring, " -> ")
 		n = *n.Next
-		outstring = fmt.Sprintf("%v%v", outstring, n.Data)			
-		}
+		outstring = fmt.Sprintf("%v%v", outstring, n.Data)
+	}
 	return outstring
 }
-
 
 // method to append to a linked list
 // take a new number and add it to the linked list
 func (n *Node) Add(new_int int) {
-	
+
 	new_n := Node{Data: new_int}
-		
-	for n.Next != nil {				
+
+	for n.Next != nil {
 		n = n.Next
 	}
 	n.Next = &new_n
@@ -41,10 +40,10 @@ func (n *Node) Add(new_int int) {
 }
 
 // method to append to front of a linked list
-func (n *Node) FrontAdd(new_int int)  {
+func (n *Node) FrontAdd(new_int int) {
 	new_n := Node{Data: new_int}
 
-	for n.Prev != nil {		
+	for n.Prev != nil {
 		n = n.Prev
 	}
 	n.Prev = &new_n
@@ -52,3 +51,11 @@ func (n *Node) FrontAdd(new_int int)  {
 
 }
 
+func (n Node) Front() Node {
+
+	for n.Prev != nil {
+		n = *n.Prev
+	}
+
+	return n
+}
