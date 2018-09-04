@@ -59,3 +59,11 @@ func (n Node) Front() Node {
 
 	return n
 }
+
+func (n Node) Back() Node{
+for n.Next != nil {
+		n = *n.Next
+	}
+
+	return n
+}
