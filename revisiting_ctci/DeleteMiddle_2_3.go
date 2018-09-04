@@ -19,12 +19,16 @@ import(
 	"./linkedlist"
 )
 
+//Remove the node that is currently being viewed from the linked list
+func DelNode(n linkedlist.Node) linkedlist.Node {
 
-// take a Node and scroll through the linked list
-// to return the front position
+	next := *n.Next
+	prev := *n.Prev
 
+	next.Prev = &prev
+	prev.Next = &next
 
-func DelNode(n Node) Node {
+	return next
 
 }
 
@@ -40,6 +44,10 @@ func main(){
 	data.FrontAdd(2)
 	data.FrontAdd(2)
 	data.FrontAdd(2)
+
+	fmt.Println(data.Front())
+
+	data = DelNode(data)
 
 	fmt.Println(data.Front())
 
