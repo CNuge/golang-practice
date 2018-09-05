@@ -1,0 +1,5 @@
+/*
+
+check if the data in a linked list is a palindrome
+
+*/
