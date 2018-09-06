@@ -110,19 +110,6 @@ func SumDigits( d1, d2 linkedlist.Node) linkedlist.Node {
 }
 
 
-func NodesToNumbers(n linkedlist.Node) string {
-	n.Front()
-	number := string(n.Data)
-
-	for n.Next != nil {
-		n = *n.Next
-		number = string(n.Data) + number
-	}
-
-	return number
-
-}
-
 func main(){
 
 	// d1 9231 
@@ -145,9 +132,6 @@ func main(){
 	fmt.Println(d2.Front())
 	fmt.Println(output)
 
-	//fmt.Println(NodesToNumbers(d1))
-	//fmt.Println(NodesToNumbers(d2))
-	//fmt.Println(NodesToNumbers(output))//11950
 
 }
 
