@@ -28,30 +28,24 @@ import (
 func SumDigits( d1, d2 linkedlist.Node) linkedlist.Node {
 	d1 = d1.Front()
 	d2 = d2.Front()
-
-
 	out_dig := linkedlist.Node{}
+
 	remainder := 0
+	new_dig := d1.Data + d2.Data + remainder
+	
+	if new_dig < 10 {
+		out_dig.Data = new_dig
+	}else{
+		remainder = int(new_dig/10)
+		out_dig.Data =  (new_dig-(remainder*10))
+	}
 
+	
 	for ((d1.Next != nil) && (d2.Next != nil)) {
-		new_dig := d1.Data + d2.Data + remainder
-		remainder = 0
-
-		if new_dig < 10 {
-			out_dig.Add(new_dig)
-		}else{
-			remainder = int(new_dig/10)
-			out_dig.Add((new_dig-(remainder*10)))
-		}
-
 		//advance to digit
 		d1 = *d1.Next
 		d2 = *d2.Next
-	}
 
-	if d1.Next == nil && d2.Next == nil {
-		// sum the last two digits and remainder, 
-		// carry any remainder to a separate node
 		new_dig := d1.Data + d2.Data + remainder
 		remainder = 0
 
@@ -60,12 +54,17 @@ func SumDigits( d1, d2 linkedlist.Node) linkedlist.Node {
 		}else{
 			remainder = int(new_dig/10)
 			out_dig.Add((new_dig-(remainder*10)))
-			out_dig.Add(remainder)
 		}
 
-	}else if d1.Next != nil {
+
+	}
+
+	 if d1.Next != nil {
 		// add the remaining d1 digits to the linked list, plus any remainder
 		for d1.Next != nil {
+			//advance to digit
+			d1 = *d1.Next
+
 			new_dig := d1.Data + remainder
 			remainder = 0
 
@@ -75,9 +74,6 @@ func SumDigits( d1, d2 linkedlist.Node) linkedlist.Node {
 				remainder = int(new_dig/10)
 				out_dig.Add((new_dig-(remainder*10)))
 			}
-
-			//advance to digit
-			d1 = *d1.Next
 		}	
 
 
@@ -86,6 +82,9 @@ func SumDigits( d1, d2 linkedlist.Node) linkedlist.Node {
 		// add the remaining d2 digits to the linked list, plus any remainder
 
 		for d2.Next != nil {
+			//advance to digit
+			d2 = *d2.Next
+
 			new_dig := d2.Data + remainder
 			remainder = 0
 
@@ -95,15 +94,15 @@ func SumDigits( d1, d2 linkedlist.Node) linkedlist.Node {
 				remainder = int(new_dig/10)
 				out_dig.Add((new_dig-(remainder*10)))
 			}
-
-			//advance to digit
-			d2 = *d2.Next
 		}
 
 	} 
 
-	out_dig = *out_dig.Next
-	out_dig.Prev = nil	
+	if remainder != 0 {
+		out_dig.Add(remainder)	
+	}
+
+
 	return out_dig
 
 }
@@ -135,6 +134,7 @@ func main(){
 
 	d2.FrontAdd(7)
 	d2.FrontAdd(1)
+	d2.FrontAdd(9)
 	d2.FrontAdd(9)
 
 	output := SumDigits(d1, d2)
