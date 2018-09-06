@@ -20,6 +20,7 @@ package main
 import (
 	"./linkedlist"
 	"fmt"
+	"strconv"
 )
 
 // take two numbers represented as linked lists and sum them to create a single linked list
@@ -34,11 +35,9 @@ func SumDigits( d1, d2 linkedlist.Node) linkedlist.Node {
 
 	for ((d1.Next != nil) && (d2.Next != nil)) {
 		new_dig := d1.Data + d2.Data + remainder
-		fmt.Println(new_dig)
 		remainder = 0
 
 		if new_dig < 10 {
-			
 			out_dig.Add(new_dig)
 		}else{
 			remainder = int(new_dig/10)
@@ -109,6 +108,18 @@ func SumDigits( d1, d2 linkedlist.Node) linkedlist.Node {
 
 }
 
+func NodesToNumbers(n linkedlist.Node) int {
+	n = n.Front()
+	number := fmt.Sprintf("%v",n.Data)
+
+	for n.Next != nil {
+		n = *n.Next
+		number = fmt.Sprintf("%v",n.Data) + number
+	}
+
+	outnum, _ := strconv.Atoi(number)
+	return outnum
+}
 
 func main(){
 
@@ -133,5 +144,11 @@ func main(){
 	fmt.Println(output)
 
 
+	fmt.Println(NodesToNumbers(d1))
+	fmt.Println(NodesToNumbers(d2))
+	fmt.Println(NodesToNumbers(output))//11950
+
+	fmt.Println("d1 + d2 == output:")
+	fmt.Println((NodesToNumbers(d1) + (NodesToNumbers(d2)) == NodesToNumbers(output)))
 }
 
