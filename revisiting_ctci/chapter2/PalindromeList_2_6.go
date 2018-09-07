@@ -6,17 +6,15 @@ check if the data in a linked list is a palindrome
 
 package main
 
-
 import (
-	"fmt"
 	"./linkedlist"
+	"fmt"
 )
-
 
 func LenLL(ll linkedlist.Node) int {
 	ll = ll.Front()
 	ll_len := 1
-	for ll.Next != nil{
+	for ll.Next != nil {
 		ll = *ll.Next
 		ll_len += 1
 	}
@@ -26,13 +24,13 @@ func LenLL(ll linkedlist.Node) int {
 func IsPalindrome(ll linkedlist.Node) bool {
 	ll = ll.Front()
 	ll_back := ll.Back()
-	
+
 	ll_len := LenLL(ll)
 
-	for i := 0 ; i < int(ll_len / 2); i ++ {
-		if ll.Data != ll_back.Data{
+	for i := 0; i < int(ll_len/2); i++ {
+		if ll.Data != ll_back.Data {
 			return false
-		}else{
+		} else {
 			ll = *ll.Next
 			ll_back = *ll_back.Prev
 		}
@@ -40,8 +38,6 @@ func IsPalindrome(ll linkedlist.Node) bool {
 
 	return true
 }
-
-
 
 func main() {
 	data1 := linkedlist.Node{Data: 4}
@@ -77,5 +73,3 @@ func main() {
 	fmt.Println(IsPalindrome(data3))
 
 }
-
-
