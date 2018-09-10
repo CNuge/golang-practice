@@ -31,11 +31,11 @@ func (m MultiStack) String() string{
 	return outstring
 }
 
-func (m MultiStack) Push(pos, dat int){
+func (m *MultiStack) Push( dat, pos int){
 	m[pos].Push(dat)
 }
 
-func (m MultiStack) Pop(pos int) int {
+func (m *MultiStack) Pop(pos int) int {
 	output :=  m[pos].Pop()
 	return output
 }
@@ -51,13 +51,16 @@ func (m MultiStack) IsEmpty(pos int) bool{
 func main(){
 
 	test := MultiStack{}
+	fmt.Println(test.IsEmpty(0))
 	test.Push(1,0)
 	test.Push(2,0)
 	test.Push(3,0)
 	test.Push(4,0)
 	fmt.Println(test)
 
+	fmt.Println(test.IsEmpty(0))
 	test.Pop(0)
+	fmt.Println(test)
 
 	test.Push(4,1)
 	test.Push(5,1)
@@ -66,7 +69,7 @@ func main(){
 	test.Push(7,2)
 	test.Push(8,2)
 	test.Push(9,2)
-
+	
 	fmt.Println(test)
-
+	
 }
