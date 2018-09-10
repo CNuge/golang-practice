@@ -29,6 +29,13 @@ func (s *Stack) Push(item int) []int {
 	return s.Ord
 }
 
+func (s *Stack) IsEmpty() bool {
+	if len(s.Ord) == 0{
+		return true
+	}
+	return false
+}
+
 // pop the top integer in the stack
 func (s *Stack) Pop() int {
 	output := s.Ord[len(s.Ord)-1]

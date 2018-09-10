@@ -37,10 +37,7 @@ func (m *MultiStack) Pop(pos int) int {
 }
 
 func (m MultiStack) IsEmpty(pos int) bool {
-	if len(m[pos].Ord) == 0 {
-		return true
-	}
-	return false
+	return m[pos].IsEmpty()
 }
 
 func main() {
