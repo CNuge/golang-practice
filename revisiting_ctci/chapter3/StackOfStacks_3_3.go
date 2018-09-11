@@ -8,3 +8,53 @@ when popping stacks, need to close stacks when they become empty
 
 
 */
+
+
+package main
+
+import(
+	"./stack"
+	"fmt"
+)
+
+// a stack of stacks, where each stack will have a max of 10 items
+type SetOfStacks []stack.Stack
+
+func (s SetOfStacks) String() string {
+	outstring := ""
+	for i, dat := range s {
+		outstring = fmt.Sprintf("%v%v\t%v\n", outstring, i, dat)
+	}
+	return outstring
+}
+
+
+func (s *SetOfStacks) Push(d int) {
+	if len(s) == 0 || len(s[ len(s)-1 ]) >= 10 {
+		new_stack := stack.Stack{}
+		new_stack.Push(d)
+		s = append(s, new_stack)
+	} else {
+		s[ len(s)-1 ].Push(d)
+	}
+
+}
+
+func (s *SetOfStacks) Pop() int {
+	out := s[ len(s)-1 ].Pop()
+
+	// if the last stack is empty then close it
+	if len(s[ len(s)-1 ]) == 0 {
+		s = s[ len(s)-2 ]
+	}
+	return out
+}
+
+func (s *SetOfStacks) Peek() int {
+	return s[ len(s)-1 ].Peek()
+}
+
+
+func main(){
+
+}

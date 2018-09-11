@@ -3,6 +3,7 @@ implement a stack with the following methods:
 
 	1. push
 	2. pop
+	3. peek
 
 recall stack is last in first out
 
@@ -42,4 +43,13 @@ func (s *Stack) Pop() int {
 	s.Ord = s.Ord[0 : len(s.Ord)-1]
 	return output
 }
+
+
+func (s *Stack) Peek() int {
+	output := s.Ord[len(s.Ord)-1]
+	return output
+}
+
+
+
 
