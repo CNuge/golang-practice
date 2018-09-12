@@ -16,6 +16,10 @@ class Stack():
 	def Pop(self):
 		return self.__dat.pop(-1)
 
+	@property
+	def data(self):
+		return [x for x in self.__dat]
+
 	def __repr__(self):
 		outstring = ''
 		""" show the data in the stack """
