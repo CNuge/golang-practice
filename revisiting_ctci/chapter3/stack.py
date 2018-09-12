@@ -21,7 +21,7 @@ class Stack():
 		""" show the data in the stack """
 		for i in reversed(self.__dat):
 			outstring += str(i)
-			outstring += '\n'
+			outstring += '\t'
 		return outstring
 
 
@@ -44,7 +44,7 @@ class TestStack(unittest.TestCase):
 		self.assertEqual(self.stackCase.Peek(), 2)
 
 	def test_print(self):
-		self.assertEqual(self.stackCase.__repr__(), '2\n7\n6\n3\n')
+		self.assertEqual(self.stackCase.__repr__(), '2\t7\t6\t3\t')
 
 if __name__ == '__main__':
 	unittest.main()
