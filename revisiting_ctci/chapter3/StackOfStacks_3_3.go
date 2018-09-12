@@ -30,31 +30,47 @@ func (s SetOfStacks) String() string {
 
 
 func (s *SetOfStacks) Push(d int) {
-	if len(s) == 0 || len(s[ len(s)-1 ]) >= 10 {
+	if len(*s) == 0 || len( (*s)[len(*s)-1].Ord ) >= 10 {
 		new_stack := stack.Stack{}
 		new_stack.Push(d)
-		s = append(s, new_stack)
+		*s = append((*s), new_stack)
 	} else {
-		s[ len(s)-1 ].Push(d)
+		(*s)[ len(*s)-1 ].Push(d)
 	}
 
 }
 
 func (s *SetOfStacks) Pop() int {
-	out := s[ len(s)-1 ].Pop()
+	out := (*s)[ len(*s)-1 ].Pop()
 
 	// if the last stack is empty then close it
-	if len(s[ len(s)-1 ]) == 0 {
-		s = s[ len(s)-2 ]
+	if len((*s)[ len(*s)-1 ].Ord) == 0 {
+		*s = (*s)[0: len(*s)-1 ]
 	}
 	return out
 }
 
 func (s *SetOfStacks) Peek() int {
-	return s[ len(s)-1 ].Peek()
+	return (*s)[ len(*s)-1 ].Peek()
 }
 
 
 func main(){
+
+	test := SetOfStacks{}
+
+	for i := 0; i < 22 ; i++ {
+		test.Push(i)
+	}
+
+	fmt.Println(test)
+
+	for i := 0 ; i < 3 ; i++ {
+		x := test.Pop()
+		fmt.Println(x)
+	}
+
+	fmt.Println(test)
+
 
 }
