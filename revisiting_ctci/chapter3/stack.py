@@ -22,7 +22,7 @@ class Stack():
 		return False
 
 	@property
-	def data(self):
+	def Data(self):
 		return [x for x in self.__dat]
 
 	def __repr__(self):

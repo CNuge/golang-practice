@@ -7,9 +7,9 @@ from stack import Stack
 
 def MinStack(s):
 
-	lowest = s.data[0]
+	lowest = s.Data[0]
 	
-	for i in s.data[1:]:
+	for i in s.Data[1:]:
 		if i < lowest:
 			lowest = i
 	return lowest
