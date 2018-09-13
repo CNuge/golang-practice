@@ -16,6 +16,11 @@ class Stack():
 	def Pop(self):
 		return self.__dat.pop(-1)
 
+	def IsEmpty(self):
+		if len(self.__dat) == 0:
+			return True
+		return False
+
 	@property
 	def data(self):
 		return [x for x in self.__dat]
