@@ -27,13 +27,13 @@ func (q Queue) String() string {
 }
 
 // add an integer to the back of the list
-func (q *Queue) Add(item int) []int {
+func (q *Queue) Push(item int) []int {
 	q.ord = append(q.ord, item)
 	return q.ord
 }
 
 // remove
-func (q *Queue) Remove() int {
+func (q *Queue) Pop() int {
 	output := q.ord[0]
 	q.ord = q.ord[1:]
 	return output
