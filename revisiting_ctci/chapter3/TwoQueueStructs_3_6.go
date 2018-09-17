@@ -59,7 +59,7 @@ type Shelter struct {
 }
 
 // take a new animal instance and add it in to the shelter
-func (s Shelter) AddAnimal(animal_type string){
+func (s *Shelter) AddAnimal(animal_type string){
 	s.Id++
 	new_animal := Animal{Species: animal_type ,
 							Id: s.Id }
@@ -70,7 +70,7 @@ func (s Shelter) AddAnimal(animal_type string){
 	}
 }
 
-func (s Shelter) Adopt(species string) Animal {
+func (s *Shelter) Adopt(species string) Animal {
 	
 	if species == "Dog"{
 		return s.Dogs.Pop()
@@ -109,9 +109,11 @@ func main(){
 	out1 := test_shelter.Adopt("any")
 	out2 := test_shelter.Adopt("any")
 	out3 := test_shelter.Adopt("any")
+	out4 := test_shelter.Adopt("Dog")
 
 	fmt.Printf("%v == Dog\n",out1)
 	fmt.Printf("%v == Cat\n",out2)
 	fmt.Printf("%v == Cat\n",out3)
+	fmt.Printf("%v == Dog\n",out4)
 
 }
