@@ -39,6 +39,23 @@ func (q *Queue) Pop() int {
 	return outval
 }
 
+func (q *Queue) Peek() int{
+	for q.s1.IsEmpty() == false{
+		q.s2.Push(q.s1.Pop())
+	}
+	outval := q.s2.Peek()
+
+	for q.s2.IsEmpty() == false{
+		q.s1.Push(q.s2.Pop())
+	}
+
+	return outval	
+}
+
+func (q *Queue) IsEmpty() bool{
+	return q.s1.IsEmpty()
+}
+
 
 func main(){
 
@@ -50,7 +67,10 @@ func main(){
 	}
 
 	fmt.Println(test_q)
-	fmt.Println("Popping from front of queue:\n")
+	fmt.Println("Popping from front of queue:")
 	fmt.Println(test_q.Pop())
-
+	fmt.Println("Peeking from front of queue:")
+	fmt.Println(test_q.Peek())
+	fmt.Println("Queue is empty?:")
+	fmt.Println(test_q.IsEmpty())
 }
