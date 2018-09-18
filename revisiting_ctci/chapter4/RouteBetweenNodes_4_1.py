@@ -1,17 +1,12 @@
-/*
+"""
 Given a directed graph, design an algorithm to find out whther there is a 
 route between two nodes
-*/
-
-package main
-
-import(
-
-)
+"""
 
 
 
 
-func main(){
 
-}
+
+
+if __name__ == '__main__':
