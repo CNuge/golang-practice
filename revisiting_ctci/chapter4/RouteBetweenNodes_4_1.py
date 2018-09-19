@@ -28,3 +28,17 @@ def IsRoute(TopNode, dest):
 if __name__ == '__main__':
 
 	#initiate a graph
+	test_nodes = Graph()
+
+	for i in range(6):
+		x = i*3
+		new = Node(x)
+
+		if len(test_nodes.Nodes) > 0:
+			test_nodes.Nodes[-1].Add(new)
+		test_nodes.Add(new)
+
+
+	IsRoute(test_nodes.Nodes[0], 14) #False
+
+	IsRoute(test_nodes.Nodes[0], 12) #True
