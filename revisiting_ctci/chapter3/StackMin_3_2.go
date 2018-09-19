@@ -3,26 +3,25 @@
  get the minimum value in a stack
 
  - efficient is to check on the way in and out
- - need to add a 'times seen' to account for the min getting popped 
+ - need to add a 'times seen' to account for the min getting popped
 
-*/ 
+*/
 
 package main
 
 import (
- 	"./stack"
- 	"fmt"
- 	"errors"
+	"./stack"
+	"errors"
+	"fmt"
 )
 
-
-func Min(s stack.Stack) (int , error) {
-	if s.IsEmpty(){
-		return -1, errors.New("The Stack is Empty!") 
+func Min(s stack.Stack) (int, error) {
+	if s.IsEmpty() {
+		return -1, errors.New("The Stack is Empty!")
 	}
 	min := s.Ord[0]
-	for _, i := range s.Ord{
-		if i < min{
+	for _, i := range s.Ord {
+		if i < min {
 			min = i
 		}
 	}
@@ -30,8 +29,7 @@ func Min(s stack.Stack) (int , error) {
 	return min, nil
 }
 
-
-func main(){
+func main() {
 
 	test := stack.Stack{}
 	test.Push(9)
