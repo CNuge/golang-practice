@@ -16,7 +16,7 @@ func TestLinkedList(t *testing.T) {
 	rep_string1 := "1 -> 1 -> 3 -> 8"
 
 	if reflect.DeepEqual(test_ll.String(), rep_string1) != true {
-		t.Errorf("String representation not correct! Have:\n%v\nwant:\n%v.", test_ll, rep_string1)
+		t.Errorf("String representation not correct! Have:\n%v\nwant:\n%v", test_ll, rep_string1)
 
 	}
 
