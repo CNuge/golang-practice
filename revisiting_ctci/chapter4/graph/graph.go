@@ -33,6 +33,6 @@ func (g Graph) String() string {
 	return outstring
 }
 
-func (g Graph) Add(new_n Node) {
-	g = append(g, new_n)
+func (g *Graph) Add(new_n Node) {
+	*g = append(*g, new_n)
 }
