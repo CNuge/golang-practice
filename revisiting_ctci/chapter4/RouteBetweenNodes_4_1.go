@@ -17,9 +17,9 @@ func IsRoute(n graph.Node, v int) bool{
 
 
 	for len(nodes) > 0 {
-		current := *(nodes[0])
-		fmt.Println(current)
-
+		current_p := nodes[0]
+		current := *current_p
+		
 		nodes = nodes[1:]
 
 		if current.Data == v{
@@ -27,27 +27,31 @@ func IsRoute(n graph.Node, v int) bool{
 		}
 
 		nodes = append(nodes, current.Adj...)		
-
-		fmt.Println(nodes)
 	}
 	return false
 }
 
 
-
 func main(){
 
-	g1 := graph.Graph{}
 
-	for i:=0 ; i < 5; i++{
-		new_node := graph.Node{Data: i*5}
-		if len(g1)>0{
-			g1[len(g1)-1].Add(new_node)		
-		}
-		g1.Add(new_node)
-	}
+	n1 := graph.Node{Data: 0}
+	n2 := graph.Node{Data: 5}
+	n3 := graph.Node{Data: 10}
+	n4 := graph.Node{Data: 15}
+	n5 := graph.Node{Data: 20}
+
+	n1.Add(&n2)
+	n2.Add(&n3)
+	n3.Add(&n4)
+	n4.Add(&n5)
+
+	g1 := graph.Graph{n1, n2, n3, n4, n5}
 
 	start := g1[0]
+
+	fmt.Println(start)
+	fmt.Println(*(start.Adj[0]))
 
 	fmt.Println("Graph being used:")
 	fmt.Println(g1)

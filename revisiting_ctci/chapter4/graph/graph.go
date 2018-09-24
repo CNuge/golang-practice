@@ -19,8 +19,8 @@ func (n Node) String() string {
 }
 
 // add to the list of nodes that the current node is connected to
-func (n *Node) Add(new_n Node) {
-	n.Adj = append(n.Adj, &new_n)
+func (n *Node) Add(new_n *Node) {
+	n.Adj = append(n.Adj, new_n)
 }
 
 type Graph []Node

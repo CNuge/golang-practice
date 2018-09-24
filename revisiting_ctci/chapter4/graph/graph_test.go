@@ -11,8 +11,8 @@ func TestNode(t *testing.T) {
 	n2 := Node{Data: 1}
 	n3 := Node{Data: 2}
 
-	n1.Add(n2)
-	n1.Add(n3)
+	n1.Add(&n2)
+	n1.Add(&n3)
 
 	n1_ex_string := "7:\t1\t2"
 
@@ -29,11 +29,11 @@ func TestGraph(t *testing.T) {
 	n4 := Node{Data: 8}
 	n5 := Node{Data: 9}
 
-	n1.Add(n2)
-	n2.Add(n3)
-	n2.Add(n4)
-	n4.Add(n5)
-	n5.Add(n1)
+	n1.Add(&n2)
+	n2.Add(&n3)
+	n2.Add(&n4)
+	n4.Add(&n5)
+	n5.Add(&n1)
 
 	g1 := Graph{n1, n2, n3, n4, n5}
 
@@ -46,5 +46,13 @@ func TestGraph(t *testing.T) {
 	if reflect.DeepEqual(g1.String(), g_string) != true {
 		t.Errorf("String representation of Graph not correct! Have:\n%v\nwant:\n%v",
 			g1, g_string)
+	}
+
+	pos_test := g1[0]
+	next_pos := *(pos_test.Adj[0])
+	
+	if reflect.DeepEqual(next_pos, g1[1]) != true {
+		t.Errorf("Position in the adjacent nodes list not representing graph componenets. Have:\n%v\nwant:\n%v",
+			next_pos, g1[1])
 	}
 }
