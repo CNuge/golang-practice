@@ -1,39 +1,36 @@
 /*
-Given a directed graph, design an algorithm to find out whther there is a 
+Given a directed graph, design an algorithm to find out whther there is a
 route between two nodes
 */
 
 package main
 
-import(
+import (
 	"./graph"
 	"fmt"
 )
 
 // given a starting node, see if there is a route to a node
 // containing the given value
-func IsRoute(n graph.Node, v int) bool{
+func IsRoute(n graph.Node, v int) bool {
 	nodes := []*graph.Node{&n}
-
 
 	for len(nodes) > 0 {
 		current_p := nodes[0]
 		current := *current_p
-		
+
 		nodes = nodes[1:]
 
-		if current.Data == v{
+		if current.Data == v {
 			return true
 		}
 
-		nodes = append(nodes, current.Adj...)		
+		nodes = append(nodes, current.Adj...)
 	}
 	return false
 }
 
-
-func main(){
-
+func main() {
 
 	n1 := graph.Node{Data: 0}
 	n2 := graph.Node{Data: 5}
