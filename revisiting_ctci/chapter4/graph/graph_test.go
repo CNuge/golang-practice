@@ -50,7 +50,7 @@ func TestGraph(t *testing.T) {
 
 	pos_test := g1[0]
 	next_pos := *(pos_test.Adj[0])
-	
+
 	if reflect.DeepEqual(next_pos, g1[1]) != true {
 		t.Errorf("Position in the adjacent nodes list not representing graph componenets. Have:\n%v\nwant:\n%v",
 			next_pos, g1[1])
