@@ -16,6 +16,8 @@ type BNode struct{
 }
 
 
+
+//take a sorted list and construct a binary search tree
 func BuildBalancedTree(s_list []int) BNode{
 	if len(s_list) == 0{
 		return BNode{}
@@ -24,15 +26,23 @@ func BuildBalancedTree(s_list []int) BNode{
 
 	pos := BNode{Data : s_list[middle]}
 
-	left := BuildBalancedTree(s_list[:middle])
-	right := BuildBalancedTree(s_list[middle+1:])
 
-	pos.Left = &left
-	pos.Right = &right
+	if len(s_list[:middle]) > 0{
+		left := BuildBalancedTree(s_list[:middle])
+		pos.Left = &left	
+	} else {
+		pos.Left = nil
+	}
+	
+	if len(s_list[middle+1:]) > 0 {
+		right := BuildBalancedTree(s_list[middle+1:])
+		pos.Right = &right
+	} else{
+		pos.Right = nil
+	}
 
 	return pos
 }
-
 
 
 func main(){
