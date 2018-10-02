@@ -15,16 +15,13 @@ func ValidateBST(s graph.BNode) bool {
 	var right_ans bool
 
 	if s.Left != nil {
-
 		left := *s.Left
-
-		fmt.Printf("data: %v , left: %v\n", s.Data, left.Data)
 
 		if left.Data > s.Data {
 			return false
 		}
-
 		left_ans = ValidateBST(left)
+
 	} else {
 		left_ans = true
 	}
@@ -32,13 +29,11 @@ func ValidateBST(s graph.BNode) bool {
 	if s.Right != nil {
 		right := *s.Right
 
-		fmt.Printf("data: %v , right: %v\n", s.Data, right.Data)
-
 		if right.Data < s.Data {
 			return false
 		}
-
 		right_ans = ValidateBST(right)
+		
 	} else {
 		right_ans = true
 	}
